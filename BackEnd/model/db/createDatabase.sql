@@ -4,6 +4,15 @@ CREATE DATABASE IF NOT EXISTS colegio;
 -- Usar la base de datos
 USE colegio;
 
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    contraseña VARCHAR(255) NOT NULL,
+    rango TINYINT NOT NULL CHECK (rango BETWEEN 1 AND 4) -- 1: Alumno, 2: Preceptor, 3: Profesor, 4: Directivo
+);
+-- rango es lo que define que muestra en la sidebar
+
 -- Crear tabla de alumnos
 CREATE TABLE IF NOT EXISTS alumno (
     id_alumno INT PRIMARY KEY AUTO_INCREMENT,

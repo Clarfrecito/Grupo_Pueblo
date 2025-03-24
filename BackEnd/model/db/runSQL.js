@@ -1,9 +1,11 @@
 const mysql = require('mysql2');
-const fs = require('fs');
+const path = require("path");
+const fs = require("fs");
 const connection = require('../config/db');  // Importar la conexión desde db.js
 
+const sqlFilePath = path.join(__dirname, "createDatabase.sql");
 // Lee el archivo SQL
-fs.readFile('createDatabase.sql', 'utf8', (err, data) => {
+fs.readFile(sqlFilePath, 'utf8', (err, data) => {
   if (err) {
     console.error('Error al leer el archivo SQL:', err);
     return;
